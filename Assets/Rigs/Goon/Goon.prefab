@@ -494,6 +494,8 @@ GameObject:
   - component: {fileID: 2147998082715301816}
   - component: {fileID: 1893061730312802116}
   - component: {fileID: 1893061730312802170}
+  - component: {fileID: 8378813348168271159}
+  - component: {fileID: 7405184865468592347}
   m_Layer: 0
   m_Name: Goon
   m_TagString: Untagged
@@ -560,6 +562,81 @@ MonoBehaviour:
   - m_Rig: {fileID: 1893061731518756083}
     m_Active: 1
   m_Effectors: []
+--- !u!143 &8378813348168271159
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622677181841239298}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 5.35
+  m_Radius: 1.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 2.84, z: 0.33}
+--- !u!114 &7405184865468592347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622677181841239298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e790c803dd220248b3b01f16198d581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkScale: {x: 0.65, y: 0.5, z: 0.75}
+  ankleRotationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.004032135
+      value: 0.0021209717
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.28107822
+      value: -0.23320007
+      inSlope: 0.30025327
+      outSlope: 0.30025327
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.63691473
+      value: 0.28272718
+      inSlope: 0.3283308
+      outSlope: 0.3283308
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9959717
+      value: -0.002090454
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  stepSpeed: 5
+  moveSpeed: 5
 --- !u!1 &1703895750916705137
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,6 +677,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1893061730328528276}
   - component: {fileID: 1893061730328528277}
+  - component: {fileID: 4575178835848039838}
   m_Layer: 0
   m_Name: IK Foot Right
   m_TagString: Untagged
@@ -615,7 +693,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1893061730328528279}
   m_LocalRotation: {x: -0.3835271, y: -0.64670587, z: -0.33615142, w: -0.56716913}
-  m_LocalPosition: {x: 0.8640833, y: 0.35579824, z: -0.30310866}
+  m_LocalPosition: {x: 0.8640833, y: 0, z: -0.30310866}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1893061730910661950}
@@ -643,10 +721,23 @@ MonoBehaviour:
     m_TargetPositionWeight: 1
     m_TargetRotationWeight: 1
     m_HintWeight: 1
-    m_MaintainTargetPositionOffset: 0
-    m_MaintainTargetRotationOffset: 0
+    m_MaintainTargetPositionOffset: 1
+    m_MaintainTargetRotationOffset: 1
   m_SourceObjectsGUIToggle: 1
-  m_SettingsGUIToggle: 0
+  m_SettingsGUIToggle: 1
+--- !u!114 &4575178835848039838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893061730328528279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 819e0d0cf196f8f48a9ae949b9bb63ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stepOffset: 0
 --- !u!1 &1893061730910661945
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,6 +793,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1893061731138371157}
   - component: {fileID: 1893061731138371146}
+  - component: {fileID: 3516244326460215989}
   m_Layer: 0
   m_Name: IK Foot Left
   m_TagString: Untagged
@@ -717,7 +809,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1893061731138371156}
   m_LocalRotation: {x: -0.33633867, y: -0.5672027, z: -0.38400787, w: -0.6462936}
-  m_LocalPosition: {x: -0.89666355, y: 0.35538125, z: -0.30269346}
+  m_LocalPosition: {x: -0.89666355, y: 0, z: -0.30269346}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1893061730910661950}
@@ -745,10 +837,23 @@ MonoBehaviour:
     m_TargetPositionWeight: 1
     m_TargetRotationWeight: 1
     m_HintWeight: 1
-    m_MaintainTargetPositionOffset: 0
-    m_MaintainTargetRotationOffset: 0
+    m_MaintainTargetPositionOffset: 1
+    m_MaintainTargetRotationOffset: 1
   m_SourceObjectsGUIToggle: 1
-  m_SettingsGUIToggle: 0
+  m_SettingsGUIToggle: 1
+--- !u!114 &3516244326460215989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893061731138371156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 819e0d0cf196f8f48a9ae949b9bb63ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stepOffset: 3.14
 --- !u!1 &1893061731518756082
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,6 +943,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1893061731818987793}
   - component: {fileID: 1893061731818987798}
+  - component: {fileID: 8450812719735868757}
+  - component: {fileID: 5858219677280700523}
   m_Layer: 0
   m_Name: HipsConstraint
   m_TagString: Untagged
@@ -882,6 +989,67 @@ MonoBehaviour:
     m_Space: 2
   m_SourceObjectsGUIToggle: 1
   m_SettingsGUIToggle: 0
+--- !u!114 &8450812719735868757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893061731818987792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c10bdb03db33fb148b858a4a3b646cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Weight: 0.093
+  m_Data:
+    m_ConstrainedObject: {fileID: 1893061731818987793}
+    m_SourceObjects:
+      m_Length: 2
+      m_Item0:
+        transform: {fileID: 1893061731138371157}
+        weight: 1
+      m_Item1:
+        transform: {fileID: 1893061730328528276}
+        weight: 1
+      m_Item2:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item3:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item4:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item5:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item6:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item7:
+        transform: {fileID: 0}
+        weight: 0
+    m_Offset: {x: 0, y: 0, z: 0}
+    m_ConstrainedAxes:
+      x: 1
+      y: 1
+      z: 1
+    m_MaintainOffset: 1
+  m_SourceObjectsGUIToggle: 1
+  m_SettingsGUIToggle: 1
+--- !u!114 &5858219677280700523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893061731818987792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8dfe54cebf94c44094244b99c33f28b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1984747886299176574
 GameObject:
   m_ObjectHideFlags: 0
