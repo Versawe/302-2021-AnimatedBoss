@@ -11,8 +11,6 @@ public class PlayerMovement : MonoBehaviour
     Vector3 inputDirection = new Vector3();
 
     private bool isTryingToMove = false;
-    public Transform leg1;
-    public Transform leg2;
 
     public float walkSpeed = 5;
 
@@ -40,52 +38,12 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        if (timeLeftGrounded > 0) timeLeftGrounded -= Time.deltaTime;
 
         MovePlayer();
 
-        if (isGrounded) WiggleLegs(); // idle + walk
-        else AirLegs(); // jump (or falling)
     }
 
-    private void WiggleLegs()
-    {
-        float degrees = 45;
-        float speed = 10;
 
-
-        if (isTryingToMove)
-        {
-            Vector3 localDirection = transform.InverseTransformDirection(inputDirection);
-            Vector3 axis = Vector3.Cross(localDirection, Vector3.up);
-
-            //check localDirection against forward vector
-
-            float alignment = Vector3.Dot(localDirection, Vector3.forward);
-
-            //if (alignment < 0) alignment *= -1; // flip negative numbers
-            alignment = Mathf.Abs(alignment); // flip negative numbers
-
-            degrees *= AnimMath.Lerp(0.25f, 1, alignment); //decrease degree variable when strafing
-
-            float wave = Mathf.Sin(Time.time * speed) * degrees; //  (-45 to 45)
-
-            leg1.localRotation = AnimMath.Slide(leg1.localRotation, Quaternion.AngleAxis(wave, axis), 0.01f);
-            leg2.localRotation = AnimMath.Slide(leg2.localRotation, Quaternion.AngleAxis(-wave, axis), 0.01f);
-        }
-        else
-        {
-            leg1.localRotation = AnimMath.Slide(leg1.localRotation, Quaternion.identity, 0.01f);
-            leg2.localRotation = AnimMath.Slide(leg2.localRotation, Quaternion.identity, 0.01f);
-        }
-        
-    }
-
-    private void AirLegs()
-    {
-        leg1.localRotation = AnimMath.Slide(leg1.localRotation, Quaternion.Euler(30, 0, 0), .001f);
-        leg2.localRotation = AnimMath.Slide(leg2.localRotation, Quaternion.Euler(-30, 0, 0), .001f);
-    }
 
     private void MovePlayer()
     {
