@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 19344444}
   - component: {fileID: 19344445}
+  - component: {fileID: 1138189496}
   m_Layer: 0
   m_Name: IKLeftFoot
   m_TagString: Untagged
@@ -57,6 +58,24 @@ MonoBehaviour:
     m_MaintainTargetRotationOffset: 1
   m_SourceObjectsGUIToggle: 1
   m_SettingsGUIToggle: 1
+--- !u!114 &1138189496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19344443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27dde4640169f5e49b1e32c47bc14978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zMove1: -3
+  zMove2: 4
+  yMove1: -2
+  yMove2: 2
+  xStay: -0.6411612
+  startingRot: {x: 0, y: 0, z: 0}
 --- !u!1 &1410944140
 GameObject:
   m_ObjectHideFlags: 0
@@ -67,6 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1410944141}
   - component: {fileID: 3974542081158254312}
+  - component: {fileID: 1634884659}
   m_Layer: 0
   m_Name: HipConstraint
   m_TagString: Untagged
@@ -111,6 +131,22 @@ MonoBehaviour:
     m_Space: 2
   m_SourceObjectsGUIToggle: 1
   m_SettingsGUIToggle: 1
+--- !u!114 &1634884659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410944140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca2c759c6f59da84a84e88284b40eed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yMove1: 5
+  yMove2: 0.01
+  startingPos: {x: 0, y: 0, z: 0}
+  startingRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &17162215331734846
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,8 +1158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e8eb4c3865de8a49a7093ce8b925d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leg1: {fileID: 19344444}
-  leg2: {fileID: 6881662099735470945}
   walkSpeed: 5
 --- !u!143 &1239499930
 CharacterController:
@@ -2082,15 +2116,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5579244374205084058}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27dde4640169f5e49b1e32c47bc14978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xMove1: 5
-  xMove2: 4
+  zMove1: 3
+  zMove2: 4
   yMove1: 2
-  yMove2: 3
+  yMove2: 2
+  xStay: 0.6411617
   startingRot: {x: 0, y: 0, z: 0}
 --- !u!1 &5596600418675865181
 GameObject:
@@ -2473,6 +2508,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8506140845923921432}
   - component: {fileID: 5711702331541312920}
+  - component: {fileID: 241873394}
   m_Layer: 0
   m_Name: IKLeftHand
   m_TagString: Untagged
@@ -2520,6 +2556,25 @@ MonoBehaviour:
     m_MaintainTargetRotationOffset: 1
   m_SourceObjectsGUIToggle: 1
   m_SettingsGUIToggle: 1
+--- !u!114 &241873394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7382226683298885552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33a2dc27cde03c47ad71452e48fa963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zMove1: -3
+  zMove2: 4
+  yMove1: 0.25
+  yMove2: 0.25
+  xStay: -1
+  startingRot: {x: 0, y: 0, z: 0}
+  startX: -1.5
 --- !u!1 &7465935810588773414
 GameObject:
   m_ObjectHideFlags: 0
@@ -2929,6 +2984,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7348939087771705737}
   - component: {fileID: 5711702331541312921}
+  - component: {fileID: 1849963947}
   m_Layer: 0
   m_Name: IKRightHand
   m_TagString: Untagged
@@ -2976,6 +3032,25 @@ MonoBehaviour:
     m_MaintainTargetRotationOffset: 1
   m_SourceObjectsGUIToggle: 1
   m_SettingsGUIToggle: 1
+--- !u!114 &1849963947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8909179907073259552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33a2dc27cde03c47ad71452e48fa963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zMove1: 3
+  zMove2: 4
+  yMove1: 0.25
+  yMove2: 0.25
+  xStay: 1
+  startingRot: {x: 0, y: 0, z: 0}
+  startX: 1.5
 --- !u!1 &9029213886391664795
 GameObject:
   m_ObjectHideFlags: 0
