@@ -11,7 +11,8 @@ public class HandAnimation : MonoBehaviour
 
     public float xStay = 0.5f;
 
-    public Vector3 startingRot;
+    public Quaternion startingRot;
+    public Vector3 startingPos;
     public float startX = 1.5f;
     private float startY = 3;
     private float startZ = 0;
@@ -19,9 +20,10 @@ public class HandAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startingRot = new Vector3(startX, startY, startZ);
+        startingRot = transform.localRotation;
+        startingPos = new Vector3(startX, startY, startZ);
 
-        transform.localPosition = startingRot;
+        transform.localPosition = startingPos;
     }
 
     // Update is called once per frame
@@ -32,6 +34,22 @@ public class HandAnimation : MonoBehaviour
 
     private void HandWalking()
     {
+        zMove2 = 4f;
+        yMove1 = 0.25f;
+        yMove2 = 0.01f;
+        
+        if (gameObject.name == "IKLeftHand") 
+        {
+            zMove1 = -3;
+            xStay = -1.5f;
+        }
+        else
+        {
+            xStay = 1.5f;
+            zMove1 = 3f;
+        }
+
+
         float zMove = Mathf.Sin(Time.time * zMove1) * zMove2;
         float yMove = Mathf.Sin(Time.time * yMove1) * yMove2;
         float xMove = Mathf.Sin(Time.time * 1f) * 0.25f;
