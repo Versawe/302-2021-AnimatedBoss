@@ -993,6 +993,7 @@ GameObject:
   - component: {fileID: 3726942221987593628}
   - component: {fileID: 1239499929}
   - component: {fileID: 1239499930}
+  - component: {fileID: 8269211077313422656}
   m_Layer: 0
   m_Name: rigged-dude 1
   m_TagString: Untagged
@@ -1159,7 +1160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e8eb4c3865de8a49a7093ce8b925d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
+  State: Idle
+  isAiming: 0
 --- !u!143 &1239499930
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1178,6 +1180,20 @@ CharacterController:
   m_SkinWidth: 0.01
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 3.07, z: 0}
+--- !u!114 &8269211077313422656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053256771483838253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 057afceb007930b49a135f9eef0c3f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthMax: 100
+  isDying: 0
 --- !u!1 &3106821490753836964
 GameObject:
   m_ObjectHideFlags: 0
@@ -2657,6 +2673,7 @@ MonoBehaviour:
   yMove1: 0.25
   yMove2: 0.01
   xStay: -1.5
+  yStay: 0
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   startingPos: {x: 0, y: 0, z: 0}
   startX: -1.5
@@ -3134,6 +3151,7 @@ MonoBehaviour:
   yMove1: 0.25
   yMove2: 0.01
   xStay: 1.5
+  yStay: 0
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   startingPos: {x: 0, y: 0, z: 0}
   startX: 1.5

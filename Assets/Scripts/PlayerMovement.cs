@@ -12,13 +12,16 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isTryingToMove = false;
 
-    public float walkSpeed = 5;
+    private float walkSpeed = 15;
 
     private float verticalVelocity = 0;
     private float gravityMultiplier = 30;
     private float jumpImpulse = 10;
 
     private float timeLeftGrounded = 0;
+
+    public string State = "Idle";
+    public bool isAiming = false;
 
     public bool isGrounded
     {
@@ -37,10 +40,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         MovePlayer();
-
     }
 
 
@@ -69,8 +69,6 @@ public class PlayerMovement : MonoBehaviour
         // adds lateral movement to vertical movement
         Vector3 moveDelta = inputDirection * walkSpeed + verticalVelocity * Vector3.down;
 
-
-
         //passes it all to the cc
         cc.Move(moveDelta * Time.deltaTime);
         if (cc.isGrounded)
@@ -87,5 +85,8 @@ public class PlayerMovement : MonoBehaviour
                 timeLeftGrounded = 0; // not on ground
             }
         }
+
+        if (!isTryingToMove) State = "Idle";
+        else State = "Walk";
     }
 }

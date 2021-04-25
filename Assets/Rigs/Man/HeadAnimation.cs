@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class HeadAnimation : MonoBehaviour
 {
+
+    PlayerMovement pMove;
+
     public float xMove1 = 3f;
     public float xMove2 = 0.25f;
     
@@ -16,6 +19,8 @@ public class HeadAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pMove = GetComponentInParent<PlayerMovement>();
+
         startingPos = transform.localPosition;
         startingRot = transform.localRotation;
     }
@@ -23,7 +28,21 @@ public class HeadAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HeadWalking();
+        if (pMove.State == "Idle") HeadIdle();
+        else if (pMove.State == "Walk") HeadWalking();
+    }
+
+    private void HeadIdle()
+    {
+        xMove1 = 0f;
+        xMove2 = 0f;
+        yMove1 = 0f;
+        yMove2 = 0f;
+
+        float xMove = Mathf.Sin(Time.time * xMove1) * xMove2;
+        float yMove = Mathf.Sin(Time.time * yMove1) * yMove2;
+        Vector3 idleVec = new Vector3(transform.localPosition.x + xMove, transform.localPosition.y + yMove, transform.localPosition.z);
+        transform.localPosition = AnimMath.Slide(transform.localPosition, idleVec, 0.05f);
     }
 
     private void HeadWalking()

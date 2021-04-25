@@ -11,58 +11,41 @@ public class CameraOrbit : MonoBehaviour
     private float yaw = 0;
     private float pitch = 0;
 
-    public float cameraSensitivityX = 10;
-    public float cameraSensitivityY = 10;
+    private float cameraSensitivityX = 2.5f;
+    private float cameraSensitivityY = 2.5f;
 
-    public float shakeIntensity = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
-        PlayerOrbitCamera();
+        RotateCamera();
 
-        transform.position = moveScript.transform.position;
+        transform.position = new Vector3(moveScript.transform.position.x,moveScript.transform.position.y+5,moveScript.transform.position.z);
        
     }
 
-    public void Shake(float intensity = 1)
+    private void RotateCamera()
     {
-        if(intensity > 1)
-        {
-            shakeIntensity = intensity;
-        }
-        else
-        {
-            shakeIntensity += intensity;
-            if (shakeIntensity > 1) shakeIntensity = 1;
-        }
+        //saves axis movement of x and y mouse movement
+        float mx = Input.GetAxis("Mouse X");
+        float my = Input.GetAxis("Mouse Y");
 
-    }
-
-
-    private void PlayerOrbitCamera()
-    {
-        float mx = Input.GetAxisRaw("Mouse X");
-        float my = Input.GetAxisRaw("Mouse Y");
-
+        // yaw and pitch values change determined on 
+        // mousex and mousey movement and applied sensitivity to both
         yaw += mx * cameraSensitivityX;
-        pitch += my * cameraSensitivityY;
+        pitch -= my * cameraSensitivityY;
 
- 
-        pitch = Mathf.Clamp(pitch, 15, 60);
+        //clamp pitch, so camera doesn't rotate too far low or high to seem weird
+        float pitch_clamped = Mathf.Clamp(pitch, 0f, 90f);
 
-        //find player facing
-        float playerYaw = moveScript.transform.eulerAngles.y;
-        //clamp camera-rig Yaw to playerYaw +- 40
-        yaw = Mathf.Clamp(yaw, playerYaw - 40, playerYaw + 40);
-
-
-        transform.rotation = AnimMath.Slide(transform.rotation, Quaternion.Euler(pitch, yaw, 0), .001f);
+        // use the clamped pitch and yaw to rotate camera rig, entered in as euler angles through Quaternion class 
+        transform.rotation = Quaternion.Euler(pitch_clamped, yaw, 0);
     }
 }

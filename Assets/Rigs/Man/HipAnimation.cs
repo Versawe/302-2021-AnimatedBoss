@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HipAnimation : MonoBehaviour
 {
+    PlayerMovement pMove;
     public float yMove1 = 3f;
     public float yMove2 = 0.25f;
 
@@ -13,6 +14,7 @@ public class HipAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pMove = GetComponentInParent<PlayerMovement>();
         startingPos = transform.localPosition;
         startingRot = transform.localRotation;
     }
@@ -20,10 +22,10 @@ public class HipAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HipWalking();
+        HipWalkingAndIdle();
     }
 
-    private void HipWalking()
+    private void HipWalkingAndIdle()
     {
         yMove1 = 5f;
         yMove2 = 0.01f;
