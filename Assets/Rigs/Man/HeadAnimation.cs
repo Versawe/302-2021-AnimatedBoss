@@ -6,6 +6,7 @@ public class HeadAnimation : MonoBehaviour
 {
 
     PlayerMovement pMove;
+    HealthSystem pHealth;
 
     public float xMove1 = 3f;
     public float xMove2 = 0.25f;
@@ -20,6 +21,7 @@ public class HeadAnimation : MonoBehaviour
     void Start()
     {
         pMove = GetComponentInParent<PlayerMovement>();
+        pHealth = GetComponentInParent<HealthSystem>();
 
         startingPos = transform.localPosition;
         startingRot = transform.localRotation;
@@ -30,6 +32,7 @@ public class HeadAnimation : MonoBehaviour
     {
         if (pMove.State == "Idle") HeadIdle();
         else if (pMove.State == "Walk") HeadWalking();
+        else if (pHealth.isDying) HeadDying();
     }
 
     private void HeadIdle()
@@ -56,5 +59,12 @@ public class HeadAnimation : MonoBehaviour
         float yMove = Mathf.Sin(Time.time * yMove1) * yMove2;
         Vector3 walkVec = new Vector3(transform.localPosition.x + xMove, transform.localPosition.y + yMove, transform.localPosition.z);
         transform.localPosition = AnimMath.Slide(transform.localPosition, walkVec, 0.05f);
+    }
+
+    private void HeadDying()
+    {
+        // y4.9f z.22
+        Vector3 dieVec = new Vector3(0, 4.9f, 0.22f);
+        transform.localPosition = AnimMath.Slide(transform.localPosition, dieVec, 0.05f);
     }
 }
