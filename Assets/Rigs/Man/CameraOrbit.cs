@@ -19,6 +19,9 @@ public class CameraOrbit : MonoBehaviour
     private float fieldOfView = 60f;
 
     Vector3 prevForward;
+    Vector3 dir;
+
+    private bool wasLooking = false;
 
 
     // Start is called before the first frame update
@@ -35,7 +38,6 @@ public class CameraOrbit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RotateCamera();
 
         Vector3 noZoomVec = new Vector3(moveScript.transform.position.x, moveScript.transform.position.y + 5, moveScript.transform.position.z);
         Vector3 zoomVec = new Vector3(moveScript.transform.position.x, moveScript.transform.position.y + 7, moveScript.transform.position.z);
@@ -43,6 +45,7 @@ public class CameraOrbit : MonoBehaviour
         if(pHealth.isDying) fieldOfView = 60;
         if (!moveScript.rightMouseDown)
         {
+            RotateCamera();
             transform.position = AnimMath.Slide(transform.position, noZoomVec, 0.001f);
             fieldOfView = 60;
         }
@@ -51,8 +54,10 @@ public class CameraOrbit : MonoBehaviour
             transform.position = AnimMath.Slide(transform.position, zoomVec, 0.001f);
             fieldOfView = 40;
 
-            Vector3 dir = transform.position - hamster.transform.position;
+            dir = transform.position - hamster.transform.position;
             transform.forward = -Vector3.RotateTowards(transform.position, dir, 1f, 1f);
+
+            wasLooking = true;
         }
 
         cam.fieldOfView = fieldOfView;
@@ -60,19 +65,37 @@ public class CameraOrbit : MonoBehaviour
 
     private void RotateCamera()
     {
+        float pitch_clamped = 0;
+        float mx;
+        float my;
+        if (!wasLooking) 
+        {
+            mx = Input.GetAxis("Mouse X");
+            my = Input.GetAxis("Mouse Y");
+
+            // yaw and pitch values change determined on 
+            // mousex and mousey movement and applied sensitivity to both
+            yaw += mx * cameraSensitivityX;
+            pitch -= my * cameraSensitivityY;
+
+            //clamp pitch, so camera doesn't rotate too far low or high to seem weird
+            pitch_clamped = Mathf.Clamp(pitch, 0f, 90f);
+        }
         //saves axis movement of x and y mouse movement
-        float mx = Input.GetAxis("Mouse X");
-        float my = Input.GetAxis("Mouse Y");
 
-        // yaw and pitch values change determined on 
-        // mousex and mousey movement and applied sensitivity to both
-        yaw += mx * cameraSensitivityX;
-        pitch -= my * cameraSensitivityY;
+        // use the clamped pitch and yaw to rotate camera rig, entered in as euler angles through Quaternion class
+        if (wasLooking) 
+        {
+            pitch_clamped = 1;
+            transform.rotation = Quaternion.identity;
+            if(hamster.transform.position.x > transform.position.x) yaw = 90;
+            if (hamster.transform.position.x < transform.position.x) yaw = 90;
+            if (hamster.transform.position.z > transform.position.z) yaw = 0;
+            if (hamster.transform.position.z < transform.position.z) yaw = 180;
+            wasLooking = false;
+        }
 
-        //clamp pitch, so camera doesn't rotate too far low or high to seem weird
-        float pitch_clamped = Mathf.Clamp(pitch, 0f, 90f);
-
-        // use the clamped pitch and yaw to rotate camera rig, entered in as euler angles through Quaternion class 
         transform.rotation = Quaternion.Euler(pitch_clamped, yaw, 0);
+
     }
 }

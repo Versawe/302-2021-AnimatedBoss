@@ -481,8 +481,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515746908}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.08, y: -0.73, z: 0.17}
-  m_LocalScale: {x: 47.404144, y: 1, z: 80.36933}
+  m_LocalPosition: {x: -1.08, y: -0.73, z: 16.7}
+  m_LocalScale: {x: 37.903404, y: 1, z: 127.248764}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -516,6 +516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c95e7cc2f1629c41aa3838ae6bf49ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hamster: {fileID: 0}
 --- !u!4 &1642589638
 Transform:
   m_ObjectHideFlags: 0
@@ -645,7 +646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8269211077313422656, guid: 90eadc7a27775354fbd6c82a72af342f, type: 3}
       propertyPath: healthMax
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90eadc7a27775354fbd6c82a72af342f, type: 3}
