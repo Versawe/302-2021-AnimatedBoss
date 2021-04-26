@@ -14,6 +14,7 @@ public class HealthSystem : MonoBehaviour
     private void Start()
     {
         health = healthMax;
+        if (health <= 0) Die();
     }
     //apply damage to object with script attached
     public void TakeDamage(float amount)

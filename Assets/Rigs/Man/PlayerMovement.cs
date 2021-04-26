@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
+    HealthSystem pHealth;
+    public GameObject hamster;
     private Camera cam;
     private CharacterController cc;
     Vector3 inputDirection = new Vector3();
@@ -23,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     public string State = "Idle";
     public bool isAiming = false;
 
+    public bool rightMouseDown;
+
     public bool isGrounded
     {
         get
@@ -33,17 +37,26 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pHealth = GetComponent<HealthSystem>();
         cam = Camera.main;
         cc = GetComponent<CharacterController>();
+        hamster = GameObject.Find("Root_Hamster_Idle");
     }
 
     // Update is called once per frame
     void Update()
     {
-        MovePlayer();
+        if(!pHealth.isDying) MovePlayer();
+        CheckHealth();
     }
 
-
+    private void CheckHealth()
+    {
+        if (pHealth.isDying)
+        {
+            State = "";
+        }
+    }
 
     private void MovePlayer()
     {
@@ -52,6 +65,13 @@ public class PlayerMovement : MonoBehaviour
 
         bool isJumpHeld = Input.GetButton("Jump");
         bool onJumpPress = Input.GetButtonDown("Jump");
+        rightMouseDown = Input.GetButton("Fire2");
+
+        if (rightMouseDown)
+        {
+            Vector3 dir = transform.position - hamster.transform.position;
+            transform.forward = -Vector3.RotateTowards(transform.position, dir, 0.01f, 0.01f);
+        }
 
         isTryingToMove = (h != 0 || v != 0);
         if (isTryingToMove)

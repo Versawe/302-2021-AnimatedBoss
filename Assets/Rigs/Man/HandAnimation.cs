@@ -34,8 +34,9 @@ public class HandAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pMove.State == "Idle") HandIdle();
-        else if (pMove.State == "Walk") HandWalking();
+        if (pMove.State == "Idle" && !pMove.rightMouseDown) HandIdle();
+        else if (pMove.State == "Walk" && !pMove.rightMouseDown) HandWalking();
+        else if (pMove.rightMouseDown) HandAim();
 
         backToStartTimer -= 1 * Time.deltaTime;
     }
