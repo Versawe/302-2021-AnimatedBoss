@@ -68,8 +68,8 @@ public class AnimationFoot : MonoBehaviour
             xStay = 0.6411617f;
         }
 
-        float zMove = Mathf.Sin(Time.time * zMove1) * zMove2;
-        float yMove = Mathf.Sin(Time.time * yMove1) * yMove2;
+        float zMove = Mathf.Sin(Time.time * 2 * zMove1) * zMove2;
+        float yMove = Mathf.Sin(Time.time * 5 * yMove1) * yMove2;
         Vector3 walkVec = new Vector3(xStay, Mathf.Clamp(yMove, 0.5f, 5), zMove);
         transform.localPosition = AnimMath.Slide(transform.localPosition, walkVec, 0.25f);
     }

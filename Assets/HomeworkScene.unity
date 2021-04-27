@@ -644,9 +644,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: rigged-dude
       objectReference: {fileID: 0}
-    - target: {fileID: 8269211077313422656, guid: 90eadc7a27775354fbd6c82a72af342f, type: 3}
-      propertyPath: healthMax
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90eadc7a27775354fbd6c82a72af342f, type: 3}

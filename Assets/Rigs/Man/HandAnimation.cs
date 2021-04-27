@@ -94,8 +94,8 @@ public class HandAnimation : MonoBehaviour
         }
 
 
-        float zMove = Mathf.Sin(Time.time * zMove1) * zMove2;
-        float yMove = Mathf.Sin(Time.time * yMove1) * yMove2;
+        float zMove = Mathf.Sin(Time.time * 2 *zMove1) * zMove2;
+        float yMove = Mathf.Sin(Time.time * 2 * yMove1) * yMove2;
         float xMove = Mathf.Sin(Time.time * 1f) * 0.25f;
         Vector3 walkVec = new Vector3(xStay + xMove, yStay + yMove, zMove);
         transform.localPosition = AnimMath.Slide(transform.localPosition, walkVec, 0.5f);

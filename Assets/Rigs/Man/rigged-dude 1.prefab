@@ -1160,8 +1160,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e8eb4c3865de8a49a7093ce8b925d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hamster: {fileID: 0}
   State: Idle
   isAiming: 0
+  rightMouseDown: 0
 --- !u!143 &1239499930
 CharacterController:
   m_ObjectHideFlags: 0
