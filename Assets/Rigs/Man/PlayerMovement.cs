@@ -69,8 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (rightMouseDown)
         {
-            Vector3 dir = transform.position - hamster.transform.position;
-            transform.forward = -Vector3.RotateTowards(transform.position, dir, 0.01f, 0.01f);
+            transform.forward = AnimMath.Slide(transform.forward, Camera.main.transform.forward, 0.001f);
         }
 
         isTryingToMove = (h != 0 || v != 0);

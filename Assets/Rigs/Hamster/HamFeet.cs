@@ -13,16 +13,20 @@ public class HamFeet : MonoBehaviour
     public float zMove2 = 0.05f;
     public float zClamp1 = 0;
     public float zClamp2 = 10;
+
+    HamsterController hc;
     // Start is called before the first frame update
     void Start()
     {
+        hc = GetComponentInParent<HamsterController>();
         startPos = transform.localPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //FeetWalk();
+        if (hc.HamState == "Chase") FeetWalk();
+        else if (hc.HamState == "Idle") transform.localPosition = AnimMath.Slide(transform.localPosition, startPos, 0.01f);
     }
 
     private void FeetWalk()

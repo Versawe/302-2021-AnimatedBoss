@@ -9,14 +9,22 @@ public class HamHip : MonoBehaviour
     private float xRot1 = 15;
     private float xRot2 = 20;
     Quaternion startRot;
+
+    HamsterController hc;
     // Start is called before the first frame update
     void Start()
     {
+        hc = GetComponentInParent<HamsterController>();
         startRot = transform.localRotation;
     }
 
     // Update is called once per frame
     void Update()
+    {
+        HipIdle();
+    }
+
+    private void HipIdle()
     {
         float xRot = Mathf.Sin(Time.time * xRot1) * xRot2;
 
