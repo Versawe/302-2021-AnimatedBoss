@@ -23,6 +23,7 @@ public class HamHip : MonoBehaviour
     {
         if (hc.HamState == "Idle") HipIdle();
         else if (hc.HamState == "Chase") HipWalk();
+        else if (hc.HamState == "Attack") HipAttack();
     }
 
     private void HipIdle()
@@ -37,5 +38,12 @@ public class HamHip : MonoBehaviour
         float xRot = Mathf.Sin(Time.time * 30) * 40;
 
         transform.localRotation = AnimMath.Slide(transform.localRotation, Quaternion.Euler(startRot.x + xRot, startRot.y, startRot.z), 0.01f);
+    }
+
+    private void HipAttack()
+    {
+        float zRot = Mathf.Sin(Time.time * 30) * 40;
+
+        transform.localRotation = AnimMath.Slide(transform.localRotation, Quaternion.Euler(startRot.x, startRot.y, startRot.z + zRot), 0.01f);
     }
 }

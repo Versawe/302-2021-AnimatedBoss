@@ -22,7 +22,7 @@ public class HamTail : MonoBehaviour
     void Update()
     {
         if (hc.HamState == "Idle") TailIdle();
-        else if (hc.HamState == "Chase") TailWalk();
+        else if (hc.HamState == "Chase" || hc.HamState == "Attack") TailWalk();
     }
 
     private void TailIdle()

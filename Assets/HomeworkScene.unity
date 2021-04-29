@@ -539,6 +539,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1461826572, guid: e546aef88caeb894cb877fdcf7afc33f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2652489408702651112, guid: e546aef88caeb894cb877fdcf7afc33f, type: 3}
       propertyPath: m_Name
       value: Root_Hamster_Idle

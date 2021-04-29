@@ -21,7 +21,8 @@ public class HamHead : MonoBehaviour
     void Update()
     {
         if (hc.HamState == "Idle") HeadIdle();
-        else if (hc.HamState == "Chase") HeadWalk(); 
+        else if (hc.HamState == "Chase") HeadWalk();
+        else if (hc.HamState == "Attack") HeadAttack();
     }
 
     private void HeadIdle()
@@ -45,7 +46,8 @@ public class HamHead : MonoBehaviour
     private void HeadAttack()
     {
         transform.localRotation = AnimMath.Slide(transform.localRotation, startRot, 0.01f);
-        Vector3 attackVec = new Vector3(startPos.x, startPos.y, startPos.z);
+        float zRot = Mathf.Sin(Time.time * 50) * 0.005f;
+        Vector3 attackVec = new Vector3(startPos.x, startPos.y + zRot, startPos.z);
         transform.localPosition = AnimMath.Slide(transform.localPosition, attackVec, 0.01f);
     }
 }
