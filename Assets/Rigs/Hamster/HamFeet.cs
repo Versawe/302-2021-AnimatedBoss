@@ -26,7 +26,7 @@ public class HamFeet : MonoBehaviour
     void Update()
     {
         if (hc.HamState == "Chase") FeetWalk();
-        else if (hc.HamState == "Idle") transform.localPosition = AnimMath.Slide(transform.localPosition, startPos, 0.01f);
+        else if (hc.HamState == "Idle" || hc.HamState == "Attack") transform.localPosition = AnimMath.Slide(transform.localPosition, startPos, 0.01f);
     }
 
     private void FeetWalk()
@@ -34,6 +34,13 @@ public class HamFeet : MonoBehaviour
         float zMove = Mathf.Sin(Time.time * 2f * zMove1) * zMove2;
         float yMove = Mathf.Sin(Time.time * 5f * yMove1) * yMove2;
         Vector3 walkVec = new Vector3(startPos.x + Mathf.Clamp(zMove, startPos.z + zClamp1, zClamp2), startPos.y + Mathf.Clamp(yMove, 0, 15), startPos.z);
+        transform.localPosition = AnimMath.Slide(transform.localPosition, walkVec, 0.001f);
+    }
+
+    private void FeetAttack()
+    {
+        float yMove = Mathf.Sin(Time.time * 8f * yMove1) * yMove2;
+        Vector3 walkVec = new Vector3(startPos.x, startPos.y + Mathf.Clamp(yMove, 0, 10), startPos.z);
         transform.localPosition = AnimMath.Slide(transform.localPosition, walkVec, 0.001f);
     }
 }

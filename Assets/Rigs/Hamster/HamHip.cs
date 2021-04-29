@@ -21,13 +21,21 @@ public class HamHip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HipIdle();
+        if (hc.HamState == "Idle") HipIdle();
+        else if (hc.HamState == "Chase") HipWalk();
     }
 
     private void HipIdle()
     {
         float xRot = Mathf.Sin(Time.time * xRot1) * xRot2;
 
-        transform.localRotation = Quaternion.Euler(startRot.x + xRot, startRot.y, startRot.z);
+        transform.localRotation = AnimMath.Slide(transform.localRotation, Quaternion.Euler(startRot.x + xRot, startRot.y, startRot.z), 0.01f);
+    }
+
+    private void HipWalk()
+    {
+        float xRot = Mathf.Sin(Time.time * 30) * 40;
+
+        transform.localRotation = AnimMath.Slide(transform.localRotation, Quaternion.Euler(startRot.x + xRot, startRot.y, startRot.z), 0.01f);
     }
 }

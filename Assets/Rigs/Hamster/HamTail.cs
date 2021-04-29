@@ -21,7 +21,8 @@ public class HamTail : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TailIdle();
+        if (hc.HamState == "Idle") TailIdle();
+        else if (hc.HamState == "Chase") TailWalk();
     }
 
     private void TailIdle()
@@ -30,7 +31,7 @@ public class HamTail : MonoBehaviour
         float yRot = Mathf.Sin(Time.time * yIntensity * 1) * 25;
         float zRot = Mathf.Sin(Time.time * zIntensity * 1) * 25;
 
-        transform.localRotation = Quaternion.Euler(startRot.x + xRot, startRot.y + yRot, startRot.z + zRot);
+        transform.localRotation = AnimMath.Slide(transform.localRotation, Quaternion.Euler(startRot.x + xRot, startRot.y + yRot, startRot.z +zRot), 0.01f);
     }
 
     private void TailWalk()
@@ -39,6 +40,6 @@ public class HamTail : MonoBehaviour
         float yRot = Mathf.Sin(Time.time * yIntensity * 5) * 15;
         float zRot = Mathf.Sin(Time.time * zIntensity * 2) * 15;
 
-        transform.localRotation = Quaternion.Euler(startRot.x + xRot, startRot.y + yRot, startRot.z + zRot);
+        transform.localRotation = AnimMath.Slide(transform.localRotation, Quaternion.Euler(startRot.x + xRot, startRot.y + yRot, startRot.z + zRot), 0.01f);
     }
 }

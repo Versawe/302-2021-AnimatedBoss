@@ -7,8 +7,9 @@ public class HamsterController : MonoBehaviour
 {
     GameObject player;
     NavMeshAgent nm;
-
+    private float attackDis = 12.5f;
     public string HamState = "Idle";
+    public bool IsAlerted = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,7 @@ public class HamsterController : MonoBehaviour
         nm = GetComponent<NavMeshAgent>();
 
         HamState = "Idle";
-        nm.stoppingDistance = 4f;
+        nm.stoppingDistance = attackDis;
         nm.updateRotation = true;
     }
 
@@ -24,14 +25,21 @@ public class HamsterController : MonoBehaviour
     void Update()
     {
         float dis = Vector3.Distance(transform.position, player.transform.position);
-        if (dis <= 40)
+        if (dis <= 70 && dis >= attackDis && !IsAlerted)
         {
             HamState = "Chase";
+            nm.isStopped = false;
             nm.SetDestination(player.transform.position);
+        }
+        else if (dis < attackDis || IsAlerted)
+        {
+            HamState = "Attack";
+            nm.isStopped = true;
         }
         else
         {
             HamState = "Idle";
+            nm.isStopped = true;
         }
         
     }

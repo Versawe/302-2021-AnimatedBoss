@@ -994,9 +994,10 @@ GameObject:
   - component: {fileID: 1239499929}
   - component: {fileID: 1239499930}
   - component: {fileID: 8269211077313422656}
+  - component: {fileID: 1078595188}
   m_Layer: 0
   m_Name: rigged-dude 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1196,6 +1197,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthMax: 100
   isDying: 0
+--- !u!65 &1078595188
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053256771483838253}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 4.98, z: 1.59}
+  m_Center: {x: 0, y: 3.54, z: 0.27}
 --- !u!1 &3106821490753836964
 GameObject:
   m_ObjectHideFlags: 0
