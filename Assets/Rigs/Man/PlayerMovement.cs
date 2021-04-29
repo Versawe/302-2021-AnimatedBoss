@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     private Camera cam;
     private CharacterController cc;
     Vector3 inputDirection = new Vector3();
+    public GameObject rightHand;
+    public GameObject leftHand;
 
     private bool isTryingToMove = false;
 
@@ -26,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isAiming = false;
 
     public bool rightMouseDown;
+    public bool leftMousePressed;
 
     public bool isGrounded
     {
@@ -70,6 +73,12 @@ public class PlayerMovement : MonoBehaviour
         if (rightMouseDown)
         {
             transform.forward = AnimMath.Slide(transform.forward, Camera.main.transform.forward, 0.001f);
+            leftMousePressed = Input.GetButtonDown("Fire1");
+            if (leftMousePressed)
+            {
+                rightHand.transform.position += Vector3.up * 1.25f;
+                leftHand.transform.position += Vector3.up * 1.25f;
+            }
         }
 
         isTryingToMove = (h != 0 || v != 0);

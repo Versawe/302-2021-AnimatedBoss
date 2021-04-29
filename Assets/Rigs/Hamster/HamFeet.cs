@@ -27,6 +27,7 @@ public class HamFeet : MonoBehaviour
     {
         if (hc.HamState == "Chase") FeetWalk();
         else if (hc.HamState == "Idle" || hc.HamState == "Attack") transform.localPosition = AnimMath.Slide(transform.localPosition, startPos, 0.01f);
+        else if (hc.HamState == "Death") FeetDie();
     }
 
     private void FeetWalk()
@@ -42,5 +43,11 @@ public class HamFeet : MonoBehaviour
         float yMove = Mathf.Sin(Time.time * 8f * yMove1) * yMove2;
         Vector3 walkVec = new Vector3(startPos.x, startPos.y + Mathf.Clamp(yMove, 0, 10), startPos.z);
         transform.localPosition = AnimMath.Slide(transform.localPosition, walkVec, 0.001f);
+    }
+
+    private void FeetDie()
+    {
+        Vector3 dieVec = new Vector3(startPos.x, startPos.y, startPos.z + 3);
+        transform.localPosition = AnimMath.Slide(transform.localPosition, dieVec, 0.01f);
     }
 }

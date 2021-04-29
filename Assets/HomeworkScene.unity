@@ -216,6 +216,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &567617245 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8909179907073259552, guid: 90eadc7a27775354fbd6c82a72af342f, type: 3}
+  m_PrefabInstance: {fileID: 5711702331541312915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &567617249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567617245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b03be01c5502942900a7d09028cc08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 3417985104941820217, guid: f23343dea6c847542925696961cae460, type: 3}
+  facingDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &917479306
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,6 +318,25 @@ Transform:
   m_Father: {fileID: 1642589638}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1315532237 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7382226683298885552, guid: 90eadc7a27775354fbd6c82a72af342f, type: 3}
+  m_PrefabInstance: {fileID: 5711702331541312915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1315532241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315532237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b03be01c5502942900a7d09028cc08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 3417985104941820217, guid: f23343dea6c847542925696961cae460, type: 3}
+  facingDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &1477346893
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +444,7 @@ GameObject:
   - component: {fileID: 1515746909}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -539,10 +577,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1461826572, guid: e546aef88caeb894cb877fdcf7afc33f, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2652489408702651112, guid: e546aef88caeb894cb877fdcf7afc33f, type: 3}
       propertyPath: m_Name
       value: Root_Hamster_Idle
@@ -600,6 +634,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1239499929, guid: 90eadc7a27775354fbd6c82a72af342f, type: 3}
+      propertyPath: leftHand
+      value: 
+      objectReference: {fileID: 1315532237}
+    - target: {fileID: 1239499929, guid: 90eadc7a27775354fbd6c82a72af342f, type: 3}
+      propertyPath: rightHand
+      value: 
+      objectReference: {fileID: 567617245}
     - target: {fileID: 2383680150738435479, guid: 90eadc7a27775354fbd6c82a72af342f, type: 3}
       propertyPath: m_RootOrder
       value: 0

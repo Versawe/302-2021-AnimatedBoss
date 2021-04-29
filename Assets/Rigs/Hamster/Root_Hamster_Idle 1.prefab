@@ -1182,7 +1182,7 @@ GameObject:
   - component: {fileID: 1112828904}
   m_Layer: 0
   m_Name: Root_Hamster_Idle 1
-  m_TagString: Untagged
+  m_TagString: hurt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1329,7 +1329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057afceb007930b49a135f9eef0c3f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthMax: 300
+  healthMax: 10
   isDying: 0
 --- !u!95 &7133726257508993252
 Animator:
@@ -1400,6 +1400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08ecd16072bca3244bc7776cec0930d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisThang: {fileID: 9173016233139169087}
   HamState: Idle
   IsAlerted: 0
 --- !u!65 &1112828904
@@ -3061,7 +3062,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7209735152242946949}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06e823cba41ac314ab6aa5ebb445aec9, type: 3}
   m_Name: 
