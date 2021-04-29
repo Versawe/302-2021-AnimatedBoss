@@ -36,10 +36,6 @@ public class HurtPlayer : MonoBehaviour
         {
             hs = other.GetComponent<HealthSystem>();
         }
-        else
-        {
-            print("no");
-        }
     }
 
     private void OnTriggerExit(Collider other)

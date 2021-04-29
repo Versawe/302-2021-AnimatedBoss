@@ -52,7 +52,7 @@ public class HamHip : MonoBehaviour
 
     private void HipDie()
     {
-        Vector3 deadVec = new Vector3(startPos.x, startPos.y - 0.1f, startPos.z);
+        Vector3 deadVec = new Vector3(startPos.x, startPos.y - 0.12f, startPos.z);
         transform.localRotation = AnimMath.Slide(transform.localRotation, Quaternion.Euler(startRot.x, startRot.y, startRot.z), 0.01f);
         transform.localPosition = AnimMath.Slide(transform.localPosition, deadVec, 0.01f);
     }

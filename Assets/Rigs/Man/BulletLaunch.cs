@@ -42,6 +42,7 @@ public class BulletLaunch : MonoBehaviour
             if (other.gameObject.GetComponent<HealthSystem>())
             {
                 other.gameObject.GetComponent<HealthSystem>().TakeDamage(10f);
+                other.gameObject.GetComponent<HamsterController>().IsAlerted = true;
                 //print(other.gameObject.GetComponent<HealthSystem>().health);
                 Destroy(gameObject);
             }

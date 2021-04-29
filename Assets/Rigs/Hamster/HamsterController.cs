@@ -13,6 +13,7 @@ public class HamsterController : MonoBehaviour
     private float attackDis = 12.5f;
     public string HamState = "Idle";
     public bool IsAlerted = false;
+    private float alertTimer = 10f;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,17 +30,17 @@ public class HamsterController : MonoBehaviour
     void Update()
     {
         float dis = Vector3.Distance(transform.position, player.transform.position);
-        if (dis <= 70 && hs.health > 0 && dis >= attackDis && hs.health > 0 && !IsAlerted && hs.health > 0)
+        if (dis <= 70 && hs.health > 0 && dis >= attackDis && hs.health > 0 && hs.health > 0)
         {
             HamState = "Chase";
             nm.isStopped = false;
             nm.SetDestination(player.transform.position);
         }
-        else if (dis < attackDis && hs.health > 0 || IsAlerted && hs.health > 0)
+        else if (dis < attackDis && hs.health > 0)
         {
             HamState = "Attack";
             nm.isStopped = true;
-
+            
             Vector3 dir = gameObject.transform.position - player.transform.position;
             Quaternion targetRot = Quaternion.LookRotation(-dir, Vector3.up);
             transform.rotation = AnimMath.Slide(transform.rotation, targetRot, 0.01f);
@@ -49,10 +50,23 @@ public class HamsterController : MonoBehaviour
             nm.isStopped = true;
             thisThang.gameObject.SetActive(false);
         }
-        else if(dis > 70 && hs.health > 0 && !IsAlerted && hs.health > 0)
+        else if(dis > 70 && hs.health > 0 && !IsAlerted)
         {
             HamState = "Idle";
             nm.isStopped = true;
+        }
+
+        if (IsAlerted && dis > attackDis && hs.health > 0)
+        {
+            HamState = "Chase";
+            nm.isStopped = false;
+            nm.SetDestination(player.transform.position);
+            alertTimer -= 1 * Time.deltaTime;
+        }
+        if (alertTimer <= 0)
+        {
+            IsAlerted = false;
+            alertTimer = 10f;
         }
     }
 }

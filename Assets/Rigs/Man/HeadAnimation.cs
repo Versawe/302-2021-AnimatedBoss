@@ -44,7 +44,7 @@ public class HeadAnimation : MonoBehaviour
 
         float xMove = Mathf.Sin(Time.time * xMove1) * xMove2;
         float yMove = Mathf.Sin(Time.time * yMove1) * yMove2;
-        Vector3 idleVec = new Vector3(transform.localPosition.x + xMove, transform.localPosition.y + yMove, transform.localPosition.z);
+        Vector3 idleVec = new Vector3(startingPos.x + xMove, startingPos.y + yMove, startingPos.z);
         transform.localPosition = AnimMath.Slide(transform.localPosition, idleVec, 0.05f);
     }
 
@@ -57,7 +57,7 @@ public class HeadAnimation : MonoBehaviour
 
         float xMove = Mathf.Sin(Time.time * xMove1) * xMove2;
         float yMove = Mathf.Sin(Time.time * yMove1) * yMove2;
-        Vector3 walkVec = new Vector3(transform.localPosition.x + xMove, transform.localPosition.y + yMove, transform.localPosition.z);
+        Vector3 walkVec = new Vector3(startingPos.x + xMove, startingPos.y + yMove, startingPos.z);
         transform.localPosition = AnimMath.Slide(transform.localPosition, walkVec, 0.05f);
     }
 
@@ -65,6 +65,6 @@ public class HeadAnimation : MonoBehaviour
     {
         // y4.9f z.22
         Vector3 dieVec = new Vector3(0, 4.9f, 0.22f);
-        transform.localPosition = AnimMath.Slide(transform.localPosition, dieVec, 0.05f);
+        transform.localPosition = AnimMath.Slide(transform.localPosition, dieVec, 0.01f);
     }
 }

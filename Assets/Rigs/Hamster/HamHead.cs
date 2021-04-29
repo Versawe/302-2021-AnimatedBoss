@@ -56,6 +56,6 @@ public class HamHead : MonoBehaviour
     {
         //Vector3 dieVec = new Vector3(startPos.x, startPos.y, startPos.z);
         transform.localPosition = AnimMath.Slide(transform.localPosition, startPos, 0.01f);
-        transform.localRotation = AnimMath.Slide(transform.localRotation, Quaternion.Euler(startRot.x, startRot.y, startRot.z + 30f), 0.01f);
+        transform.localRotation = AnimMath.Slide(transform.localRotation, Quaternion.Euler(startRot.x, startRot.y, startRot.z + 27f), 0.01f);
     }
 }

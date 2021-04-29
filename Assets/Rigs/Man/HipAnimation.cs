@@ -44,6 +44,6 @@ public class HipAnimation : MonoBehaviour
     {
         //y2.6 z.5
         Vector3 dieVec = new Vector3(0, 2.6f, -0.5f);
-        transform.localPosition = AnimMath.Slide(transform.localPosition, dieVec, 0.05f);
+        transform.localPosition = AnimMath.Slide(transform.localPosition, dieVec, 0.01f);
     } 
 }
